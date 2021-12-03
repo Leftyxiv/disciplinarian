@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Username is required'],
     unique: [true, 'Username is already taken'],
     trim: true,
+    lowercase: true,
   },
   password: {
     type: String,
