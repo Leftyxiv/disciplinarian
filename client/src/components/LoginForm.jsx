@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post('/api/users/login', { username, password }).then((res) => {
       window.localStorage.setItem('discAuth', res.data.user._id);
+      navigate(`/dashboard/${ res.data.user._id }`);
     });
   };
 

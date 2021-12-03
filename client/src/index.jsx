@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import Navbar from './components/Navbar.jsx';
 import SignupForm from './components/SignupForm.jsx';
