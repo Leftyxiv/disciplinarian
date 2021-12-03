@@ -20,6 +20,15 @@ router.get('/', catchAsync(async (req, res) => {
   });
 }));
 
+router.get('/:userId', catchAsync(async (req, res) => {
+  const topics = await Topic.find({ parent_id: req.params.userId });
+  res.status(200).json({
+    status: 'success',
+    results: topics.length,
+    topics,
+  });
+}));
+
 router.post('/', catchAsync(async (req, res) => {
   const newTopic = await Topic.create(req.body);
   if (!newTopic) {
