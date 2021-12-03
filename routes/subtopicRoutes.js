@@ -16,4 +16,15 @@ router.get('/', catchAsync(async (req, res, next) => {
   });
 }));
 
+router.post('/', catchAsync(async (req, res, next) => {
+  req.body.parent_id = req.topic;
+  const subTopic = await SubTopic.create(req.body);
+  res.status(201).json({
+    status: 'success',
+    data: {
+      subTopic
+    }
+  });
+}));
+
 module.exports = router;

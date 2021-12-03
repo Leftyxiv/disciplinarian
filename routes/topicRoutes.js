@@ -6,7 +6,10 @@ const subtopicRoutes = require('./subtopicRoutes');
 
 const router = express.Router();
 
-router.use('/:topicId/subtopics', subtopicRoutes);
+router.use('/:topicId/subtopics', (req, res, next) => {
+  req.topic = req.params.topicId;
+  next();
+}, subtopicRoutes);
 
 router.get('/', catchAsync(async (req, res) => {
   const topics = await Topic.find({});
