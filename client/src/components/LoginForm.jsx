@@ -13,15 +13,15 @@ const LoginForm = () => {
   };
 
   return <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Username</label>
-    <input onChange={(e) => setUsername(e.target.value)} type="text" class="form-control" placeholder="Enter Username" />
+  <div className="form-group">
+    <label>Username</label>
+    <input onChange={(e) => setUsername(e.target.value)} type="text" className="form-control" placeholder="Enter Username" />
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input onChange={(e) => setPassword(e.target.value)} type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+  <div className="form-group">
+    <label>Password</label>
+    <input onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
   </div>
-  <button onClick={handleSubmit} type="button" class="btn btn-dark">Submit</button>
+  <button onClick={handleSubmit} type="button" className="btn btn-dark">Submit</button>
 </form>
 };
 
