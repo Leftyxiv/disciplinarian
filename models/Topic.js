@@ -1,6 +1,6 @@
-const mongoos = require('mongoose');
+const mongoose = require('mongoose');
 
-const topicschema = mongoos.Schema({
+const topicschema = mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -15,5 +15,5 @@ const topicschema = mongoos.Schema({
   }
 });
 
-const Topic = mongoos.model('Topic', topicschema);
+const Topic = mongoose.model('Topic', topicschema);
 module.exports = Topic;

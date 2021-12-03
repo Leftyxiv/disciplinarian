@@ -3,6 +3,7 @@ const config = require('./db.config.js');
 const mongoose = require('mongoose');
 
 const userRouter = require('./routes/userRoutes.js');
+const topicRouter = require('./routes/topicRoutes.js');
 
 const app = express();
 
@@ -21,6 +22,7 @@ mongoose.connect(db).then(() => {
 });
 
 app.use('/api/users', userRouter);
+app.use('/api/topics', topicRouter);
 
 app.listen(port, () => {
   console.log(`express server listening on port ${ port }`);
