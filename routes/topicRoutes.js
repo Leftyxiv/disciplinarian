@@ -30,6 +30,7 @@ router.get('/:userId', catchAsync(async (req, res) => {
 }));
 
 router.post('/', catchAsync(async (req, res) => {
+  console.log(req.body);
   const newTopic = await Topic.create(req.body);
   if (!newTopic) {
     return res.status(400).json({
