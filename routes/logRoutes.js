@@ -16,4 +16,21 @@ router.get('/', catchAsync(async (req, res, next) => {
   });
 }));
 
+router.post('/', catchAsync(async (req, res, next) => {
+  req.body.parent_id = req.subtopicId;
+  const newLog = await LogEntry.create(req.body);
+  if (!newLog) {
+    return res.status(400).json({
+      status: 'fail',
+      message: 'Log entry not created'
+    });
+  }
+  res.status(201).json({
+    status: 'success',
+    data: {
+      newLog
+    }
+  });
+}));
+
 module.exports = router;
