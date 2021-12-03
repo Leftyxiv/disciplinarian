@@ -33,4 +33,52 @@ router.post('/', catchAsync(async (req, res, next) => {
   });
 }));
 
+router.get('/:logId', catchAsync(async (req, res, next) => {
+  const log = await LogEntry.findById(req.params.logId);
+  if (!log) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Log entry not found'
+    });
+  }
+  res.status(200).json({
+    status: 'success',
+    data: {
+      log
+    }
+  });
+}));
+
+router.patch('/:logId', catchAsync(async (req, res, next) => {
+  const updatedLog = await LogEntry.findByIdAndUpdate(req.params.logId, req.body);
+  if (!updatedLog) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Log entry not found'
+    });
+  }
+  res.status(200).json({
+    status: 'success',
+    data: {
+      updatedLog
+    }
+  });
+}));
+
+router.delete('/:logId', catchAsync(async (req, res, next) => {
+  const deletedLog = await LogEntry.findByIdAndDelete(req.params.logId);
+  if (!deletedLog) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Log entry not found'
+    });
+  }
+  res.status(200).json({
+    status: 'success',
+    data: {
+      deletedLog
+    }
+  });
+}));
+
 module.exports = router;
