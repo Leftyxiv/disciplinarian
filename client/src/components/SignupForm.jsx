@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
   const [username, setUsername] = useState('');
@@ -8,7 +9,8 @@ const SignupForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post('/api/users/signup', { username, password }).then((res) => {
-      console.log(res);
+      window.localStorage.setItem('discAuth', res.data.user._id);
+      navigate(`/dashboard/${ res.data.user._id }`);
     });
   };
 
