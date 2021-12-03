@@ -11,7 +11,7 @@ const subTopicSchema = new mongoose.Schema({
   },
   unitOfMeasureTwo: {
     type: String,
-  }
+  },
   parent_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Topic',
