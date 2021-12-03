@@ -5,6 +5,11 @@ const catchAsync = require('../utils/catchAsync.js');
 
 const router = express.Router();
 
+router.use('/:subtopicId/logs', (req, res, next) => {
+  req.subtopic = req.params.subtopicId;
+  next();
+},require('./logRoutes.js'));
+
 router.get('/', catchAsync(async (req, res, next) => {
   const subTopics = await SubTopic.find();
   res.status(200).json({
