@@ -11,7 +11,7 @@ router.use('/:subtopicId/logs', (req, res, next) => {
 },require('./logRoutes.js'));
 
 router.get('/', catchAsync(async (req, res, next) => {
-  const subTopics = await SubTopic.find();
+  const subTopics = await SubTopic.find({ parent_id: req.topic });
   res.status(200).json({
     status: 'success',
     results: subTopics.length,

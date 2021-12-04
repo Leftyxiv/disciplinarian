@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Subtopic = ({ subtopic }) => {
   return (
@@ -13,4 +14,6 @@ const Subtopic = ({ subtopic }) => {
       </div>
     </div>
   );
-}
+};
+
+export default Subtopic;
