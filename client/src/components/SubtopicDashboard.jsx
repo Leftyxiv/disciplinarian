@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 
 import Subtopic from './Subtopic.jsx';
 
 const SubtopicDashboard = () => {
   const [subtopics, setSubtopics] = useState([]);
   const { topicId } = useParams();
+  const navigate = useNavigate();
   useEffect(() => {
     if (topicId) {
       axios.get(`/api/topics/${topicId}/subtopics`).then((res) => {
-        setSubtopics(res.data.data.subTopics);
+        setSubtopics(res.data.data.subTopics.reverse());
       });
     }
    }, [])
   return (
     <div>
-      <h1>Subtopic Dashboard</h1>
+      <button onClick={() => navigate(-1)} className="btn btn-dark">Go back!</button>
         <div className="card">
         <div className="card-header">
           You are worth it!
@@ -29,7 +30,8 @@ const SubtopicDashboard = () => {
       </div>
       { subtopics.map(subtopic => (
         <Subtopic key={subtopic._id} subtopic={subtopic} />
-      ))}
+        ))}
+        <button onClick={() => navigate(-1)} className="btn btn-dark">Go back!</button>
     </div>
   );
 }

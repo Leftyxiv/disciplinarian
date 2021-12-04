@@ -28,13 +28,13 @@ const App = () => {
     <Routes>
       <Route exact path='/signup' element={<SignupForm />} />
       <Route exact path='/login' element={<LoginForm />} />
+      <Route exact path='/' element={<LoginForm />} />
       <Route exact path='/dashboard/:userId' element={<Dashboard />} />
       <Route exact path='/topic/create' element={<CreateTopicForm userId={userId}/>} />
       <Route exact path='/topic/:topicId/subtopics' element={<SubtopicDashboard />} />
       <Route exact path='/subtopic/:topicId/create' element={<CreateSubtopicForm />} />
       <Route exact path='/:subtopicId/logs' element={<Loglist />} />
     </Routes>
-    <h1>Hello World</h1>
   </div>;
 };
 
