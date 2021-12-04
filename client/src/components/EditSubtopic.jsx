@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -6,21 +6,32 @@ const EditSubtopicForm = () => {
   const [subtopicTitle, setSubtopicTitle] = useState('');
   const [subtopicUnit, setSubtopicUnit] = useState('');
   const [subtopicUnitTwo, setSubtopicUnitTwo] = useState('');
+  const [parent_id, setParentId] = useState('');
 
-  const { topicId } = useParams();
+  const { subtopicId } = useParams();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    axios
+      .get(`/api/topics/nothing/subtopics/${ subtopicId }`)
+      .then((res) => {
+        setSubtopicTitle(res.data.data.subTopic.title);
+        setSubtopicUnit(res.data.data.subTopic.unitOfMeasure);
+        setSubtopicUnitTwo(res.data.data.subTopic.unitOfMeasureTwo);
+        setParentId(res.data.data.subTopic.parent_id);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .get(`/api/topics/${ topicId }/subtopics`)
-      .catch((err) => console.log(err));
-    };
-
-    // .then((res) => {
-    //   setSubtopicTitle('');
-    //   navigate(`/topic/${ topicId }/subtopics`);
-    // })
+    axios.patch(`/api/topics/nothing/subtopics/${ subtopicId }`, {
+      title: subtopicTitle,
+      unitOfMeasure: subtopicUnit,
+      unitOfMeasureTwo: subtopicUnitTwo,
+    }).then((res) => {
+      navigate(`/topic/${ parent_id }/subtopics`);
+    }).catch((err) => console.log(err));
+  };
   return (
     <form>
       <div className="form-group">
