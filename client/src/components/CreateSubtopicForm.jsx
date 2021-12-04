@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
 
-const CreateSubtopicForm = (props) => {
+const CreateSubtopicForm = () => {
   const [subtopicTitle, setSubtopicTitle] = useState('');
   const [subtopicUnit, setSubtopicUnit] = useState('');
   const [subtopicUnitTwo, setSubtopicUnitTwo] = useState('');
 
+  const { topicId } = useParams();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('/api/subtopics', {
-        name: subtopicName,
-        description: subtopicDescription,
-        topic_id: props.topicId,
+      .post(`/api/topics/${ topicId }/subtopics`, {
+        title: subtopicTitle,
+        unitOfMeasure: subtopicUnit,
+        unitOfMeasureTwo: subtopicUnitTwo,
       })
       .then((res) => {
-        props.setSubtopics(res.data);
-        setSubtopicName('');
-        setSubtopicDescription('');
+        setSubtopicTitle('');
+        navigate(`/topic/${ topicId }/subtopics`);
       })
       .catch((err) => console.log(err));
   };
@@ -53,7 +55,7 @@ const CreateSubtopicForm = (props) => {
           placeholder="Unit of measure: ie time spent"
         />
       </div>
-      <button type="submit" className="btn btn-dark">
+      <button type="button" onClick={handleSubmit} className="btn btn-dark">
         Submit
       </button>
     </form>

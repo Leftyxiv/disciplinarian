@@ -10,7 +10,7 @@ const Subtopic = ({ subtopic }) => {
       <div className="card-body">
         <h5 className="card-title">{ subtopic.title }</h5>
         <p className="card-text">The units of measurements for this log entry are { subtopic.unitOfMeasure } and { subtopic.unitOfMeasureTwo }</p>
-        <Link to={`/subtopic/${ subtopic._id }`}><button className="btn btn-dark">See these logs</button></Link>
+        <Link to={`/${ subtopic._id }/logs`}><button className="btn btn-dark">See these logs</button></Link>
       </div>
     </div>
   );
