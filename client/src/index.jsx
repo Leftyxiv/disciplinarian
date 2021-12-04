@@ -10,6 +10,7 @@ import LoginForm from './components/LoginForm.jsx';
 import Dashboard from './components/Dashboard.jsx';
 import CreateTopicForm from './components/CreateTopicForm.jsx';
 import SubtopicDashboard from './components/SubtopicDashboard.jsx';
+import CreateSubtopicForm from './components/CreateSubtopicForm.jsx';
 
 const App = () => {
   const [userId, setUserId] = useState('');
@@ -29,6 +30,7 @@ const App = () => {
       <Route exact path='/dashboard/:userId' element={<Dashboard />} />
       <Route exact path='/topic/create' element={<CreateTopicForm userId={userId}/>} />
       <Route exact path='/topic/:topicId/subtopics' element={<SubtopicDashboard />} />
+      <Route exact path='/subtopic/:topicId/create' element={<CreateSubtopicForm />} />
     </Routes>
     <h1>Hello World</h1>
   </div>;
