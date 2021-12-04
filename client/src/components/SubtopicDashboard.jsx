@@ -17,14 +17,14 @@ const SubtopicDashboard = () => {
   return (
     <div>
       <h1>Subtopic Dashboard</h1>
-        <div class="card">
-        <div class="card-header">
+        <div className="card">
+        <div className="card-header">
           You are worth it!
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Create a new entry</h5>
-          <p class="card-text">Create a new entry into this topic</p>
-          <Link to={`/subtopic/${ topicId }/create`}><button class="btn btn-dark">Create a new entry</button></Link>
+        <div className="card-body">
+          <h5 className="card-title">Create a new entry</h5>
+          <p className="card-text">Create a new entry into this topic</p>
+          <Link to={`/subtopic/${ topicId }/create`}><button className="btn btn-dark">Create a new entry</button></Link>
         </div>
       </div>
       { subtopics.map(subtopic => (
