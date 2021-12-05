@@ -29,7 +29,7 @@ const App = () => {
     <Routes>
       <Route exact path='/signup' element={<SignupForm />} />
       <Route exact path='/login' element={<LoginForm />} />
-      <Route exact path='/' element={<LoginForm />} />
+      <Route exact path='/' element={<div style={{ display: 'flex', justifyContent: 'center' }}><LoginForm /><img src={'https://www.stufflovely.com/wp-content/uploads/2021/07/cover_discipline_canva-600x300.jpg'} /></div>} />
       <Route exact path='/dashboard/:userId' element={<Dashboard />} />
       <Route exact path='/topic/create' element={<CreateTopicForm userId={userId}/>} />
       <Route exact path='/topic/:topicId/subtopics' element={<SubtopicDashboard />} />
