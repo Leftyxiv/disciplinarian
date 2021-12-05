@@ -30,6 +30,7 @@ const Loglist = () => {
   }, [subtopicId]);
 
   return <div>
+    <h1>New Log Entry</h1>
     <form className='form-inline'>
       <input type='text' value={description} onChange={(e) => setDescription(e.target.value)} className='form-control' placeholder='Description...' />
       <input type='text' value={unit} onChange={(e) => setUnit(e.target.value)} className='form-control' placeholder={`how many ${ subtopic.unitOfMeasure }?`} />
@@ -51,7 +52,7 @@ const Loglist = () => {
       }}>Submit</button>
     </form>
       <button onClick={() => navigate(-1)} className='btn btn-dark'>Go Back</button>
-    { logs.map(log => <LogEntry key={log._id} subtopic={subtopic} entry={log} />) }
+    { logs.map(log => <LogEntry fetchNew={fetchNew} key={log._id} subtopic={subtopic} entry={log} />) }
     <button onClick={() => navigate(-1)} className='btn btn-dark'>Go Back</button>
   </div>;
 };

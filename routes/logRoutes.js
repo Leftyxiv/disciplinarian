@@ -6,7 +6,7 @@ const catchAsync = require('../utils/catchAsync.js');
 const router = express.Router();
 
 router.get('/', catchAsync(async (req, res, next) => {
-  console.log(req.subtopic)
+  console.log(req.subtopic, 'yayayaya');
   const logs = await LogEntry.find({ parent_id: req.subtopic }); // { parent_id: req.subtopic }
   res.status(200).json({
     status: 'success',
