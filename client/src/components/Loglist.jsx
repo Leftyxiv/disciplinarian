@@ -50,6 +50,7 @@ const Loglist = () => {
         .catch(err => console.log(err));
       }}>Submit</button>
     </form>
+      <button onClick={() => navigate(-1)} className='btn btn-dark'>Go Back</button>
     { logs.map(log => <LogEntry key={log._id} subtopic={subtopic} entry={log} />) }
     <button onClick={() => navigate(-1)} className='btn btn-dark'>Go Back</button>
   </div>;

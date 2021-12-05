@@ -8,11 +8,15 @@ const SubtopicDashboard = () => {
   const [subtopics, setSubtopics] = useState([]);
   const { topicId } = useParams();
   const navigate = useNavigate();
+
+  const updateSubtopics = () => {
+    axios.get(`/api/topics/${topicId}/subtopics`).then((res) => {
+      setSubtopics(res.data.data.subTopics.reverse());
+    });
+  };
   useEffect(() => {
     if (topicId) {
-      axios.get(`/api/topics/${topicId}/subtopics`).then((res) => {
-        setSubtopics(res.data.data.subTopics.reverse());
-      });
+      updateSubtopics();
     }
    }, [])
   return (
@@ -29,7 +33,7 @@ const SubtopicDashboard = () => {
         </div>
       </div>
       { subtopics.map(subtopic => (
-        <Subtopic key={subtopic._id} subtopic={subtopic} />
+        <Subtopic updateSubtopics={updateSubtopics} key={subtopic._id} subtopic={subtopic} />
         ))}
         <button onClick={() => navigate(-1)} className="btn btn-dark">Go back!</button>
     </div>

@@ -1,6 +1,9 @@
 const express = require('express');
 const config = require('./db.config.js');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
+const hpp = require('hpp');
+const mongoSanitize = require('express-mongo-sanitize');
 
 const userRouter = require('./routes/userRoutes.js');
 const topicRouter = require('./routes/topicRoutes.js');
@@ -10,6 +13,11 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./client/dist'));
+
+// security middlewares
+app.use(helmet());
+app.use(hpp());
+app.use(mongoSanitize());
 
 const port = 3000;
 
