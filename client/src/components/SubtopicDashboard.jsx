@@ -24,7 +24,7 @@ const SubtopicDashboard = () => {
       <button onClick={() => navigate(-1)} className="btn btn-dark">Go back!</button>
         <div className="card">
         <div className="card-header">
-          You are worth it!
+          {/* You are worth it! */}
         </div>
         <div className="card-body">
           <h5 className="card-title">Create a new entry</h5>

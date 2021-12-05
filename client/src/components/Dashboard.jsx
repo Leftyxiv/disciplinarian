@@ -28,7 +28,7 @@ const Dashboard = (props) => {
         <div className="card" style={{ width: "18rem" }}>
     <div className="card-body">
       <h5 className="card-title">New Topic</h5>
-      <h6 className="card-subtitle mb-2 text-muted">YOU CAN DO THIS!!!</h6>
+      {/* <h6 className="card-subtitle mb-2 text-muted">YOU CAN DO THIS!!!</h6> */}
       <p className="card-text">Click here to create a new topic</p>
       <Link to={`/topic/create`}><button className="btn btn-dark">Create new topic!</button></Link>
     </div>

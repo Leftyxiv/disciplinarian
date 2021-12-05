@@ -30,7 +30,7 @@ const LogEntry = ({ entry, subtopic, fetchNew }) => {
       <div className="card-body">
         <blockquote className="blockquote mb-0">
           <p>{ entry.description } - { entry.unitOfMeasure } { subtopic.unitOfMeasure }'s at { entry.unitOfMeasureTwo } { subtopic.unitOfMeasureTwo }</p>
-          <footer className="blockquote-footer"> { subtopic.title }<cite title="Source Title"></cite></footer>
+          {/* <footer className="blockquote-footer"> { subtopic.title }<cite title="Source Title"></cite></footer> */}
         </blockquote>
       </div>
     </div>

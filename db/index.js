@@ -3,7 +3,7 @@ const config = require('../db.config.js');
 
 const db = config.DATABASE.replace(
   '-PASSWORD-',
-  config.DATABASE_PASSWORDA
+  config.DATABASE_PASSWORD
 );
 
 mongoose.connect(db).then(() => {

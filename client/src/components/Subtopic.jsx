@@ -23,7 +23,7 @@ const Subtopic = ({ subtopic, updateSubtopics }) => {
   return (
     <div className="card">
       <div className="card-header">
-        Stay Focused!
+        {/* Stay Focused! */}
       </div>
       <div className="card-body">
         <h5 className="card-title">{ subtopic.title }</h5>
