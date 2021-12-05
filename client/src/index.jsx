@@ -13,6 +13,7 @@ import SubtopicDashboard from './components/SubtopicDashboard.jsx';
 import CreateSubtopicForm from './components/CreateSubtopicForm.jsx';
 import Loglist from './components/Loglist.jsx';
 import EditSubtopicForm from './components/EditSubtopic.jsx';
+import EditLogEntry from './components/EditLogEntry.jsx';
 
 const App = () => {
   const [userId, setUserId] = useState('');
@@ -36,6 +37,7 @@ const App = () => {
       <Route exact path='/subtopic/:topicId/create' element={<CreateSubtopicForm />} />
       <Route exact path='/:subtopicId/logs' element={<Loglist />} />
       <Route exact path='/subtopic/:subtopicId/edit' element={<EditSubtopicForm />} />
+      <Route exact path='/:subtopicId/:logId/editlog' element={<EditLogEntry />} />
     </Routes>
   </div>;
 };
